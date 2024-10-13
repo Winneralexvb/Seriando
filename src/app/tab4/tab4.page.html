@@ -1,0 +1,112 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="open-modal" expand="block">
+        <ion-icon class="devs" name="people-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-chip (click)="navigateTo('tab1')">
+      <ion-avatar class="profile">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>Usuário</ion-label>
+    </ion-chip>
+    <ion-list lines="inset">
+      <ion-item>
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label (click)="navigateTo('tab1')">Editar Perfil</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="information-outline"></ion-icon>
+        <ion-label (click)="navigateTo('tab2')">Informações</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="book-outline"></ion-icon>
+        <ion-label (click)="navigateTo('tab3')">Assistidos</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-header>
+  <div class="favoritos">
+    <ion-h1 class="favoritos-text">Favoritos:</ion-h1>
+    <swiper-container [slidesperview]="3" [loop]="true">
+      <swiper-slide>
+        <div class="slide-img"></div>
+        <div class="slide-text">
+          <p>Nome</p>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="slide-img"></div>
+        <div class="slide-text">
+          <p>Nome</p>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="slide-img"></div>
+        <div class="slide-text">
+          <p>Nome</p>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="slide-img"></div>
+        <div class="slide-text">
+          <p>Nome</p>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <div class="page-container">
+    <ion-button class="sairperfil" fill="clear" expand="block" size="large"
+      (click)="navigateTo('tab1')">Sair</ion-button>
+  </div>
+  <ion-modal trigger="open-modal" [initialBreakpoint]="0.4" [breakpoints]="[0, 0.4, 1]">
+    <ng-template>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-avatar class="devavatar" slot="start">
+            <ion-img src="https://avatars.githubusercontent.com/u/145864729?v=4"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Gabriel Dainez</h2>
+            <p>Desenvolvedor</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="devavatar" slot="start">
+            <ion-img src="https://avatars.githubusercontent.com/u/150967993?v=4"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Marcos Filipe</h2>
+            <p>Desenvolvedor</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="devavatar" slot="start">
+            <ion-img src="https://avatars.githubusercontent.com/u/149628161?v=4"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Winner Alex</h2>
+            <p>Desenvolvedor</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar class="devavatar" slot="start">
+            <ion-img src="https://avatars.githubusercontent.com/u/83677370?v=4"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Oswaldo Peres</h2>
+            <p>Mentor</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
