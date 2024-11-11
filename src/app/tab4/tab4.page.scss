@@ -1,3 +1,50 @@
+.userbanner {
+    background-image: url(../../assets/image/wakandaforever.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 20%;
+}
+
+.userconfig {
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    width: 100vw;
+}
+
+.userprofile {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: baseline;
+    position: absolute;
+    gap: 10px;
+    width: 90vw;
+    height: 10vh;
+    z-index: 1;
+    top: 15vh;
+    left: 4vw;
+}
+
+.userprofile>img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.userprofile>p {
+    font-size: 1.8rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* .userprofile>ion-label {
+} */
+
+/* .userconfig>ion-icon {
+} */
+
 .favoritos {
     width: 100vw;
     height: auto;
@@ -13,7 +60,7 @@
     padding-left: 50px;
 }
 
-swiper-slide {
+.favoritos-swipe {
     justify-content: center;
     text-align: center;
     display: flex;
@@ -22,10 +69,77 @@ swiper-slide {
     height: auto;
 }
 
-swiper-container {
+.favoritos-swiper {
     width: 100vw;
     height: auto;
     height: 200px;
+    margin-top: 10px;
+}
+
+.slide-img-favoritos {
+    background-image: url(../../assets/image/wakandaforever.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ff0000;
+    width: 90vw;
+    height: 18vh;
+    border-radius: 25px;
+    margin: 0 auto;
+}
+
+.slide-text-favoritos p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 8px;
+}
+
+.slide {
+    width: 100vw;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2px;
+}
+
+.slide-title {
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 50px;
+    margin-top: 10px;
+    width: 55vw;
+    height: 3vh;
+}
+
+.slide-title>span {
+    border-bottom: 2px solid #ff0000;
+}
+
+ion-checkbox {
+    margin: 6px 6px 0 0;
+    --size: 26px;
+    --checkbox-background-checked: #ec1515;
+}
+
+ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 1px solid #ff0000;
+}
+
+swiper-slide {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+swiper-container {
+    width: 100vw;
+    height: 100%;
+    /* Garante que o swiper ocupe toda a altura disponível */
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -34,17 +148,30 @@ swiper-container {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 90vw;
-    height: 18vh;
+    width: 30vw;
+    height: 70%;
     border-radius: 25px;
     margin: 0 auto;
+    border: 1px solid #ff0000;
+}
+
+.slide-text {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    overflow: hidden;
 }
 
 .slide-text p {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 16px;
     margin-top: 8px;
-    color: black;
+    width: 28vw;
+    height: 76.5px;
+    text-overflow: ellipsis;
 }
 
 
@@ -58,42 +185,9 @@ swiper-container {
     }
 
 
-    ion-chip {
-        font-size: 1.2rem;
-        padding: 15px;
-        padding-right: 62%;
-        border-radius: 50px;
-    }
-
-    .profile {
-        width: 60px;
-        height: 60px;
-    }
-
     .devavatar {
         width: 50px;
         height: 50px;
-    }
-
-    ion-avatar img {
-        width: 100%;
-        height: 100%;
-
-    }
-
-    .sairperfil {
-        bottom: 92%;
-        position: static;
-        margin-bottom: 0px;
-        margin: 0px;
-    }
-
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        height: 65vh;
     }
 
 }
@@ -107,43 +201,9 @@ swiper-container {
         --height: auto;
     }
 
-
-    ion-chip {
-        font-size: 1.2rem;
-        margin-top: 5px;
-        padding: 15px;
-        padding-right: 62%;
-        border-radius: 50px;
-    }
-
-    .profile {
-        width: 60px;
-        height: 60px;
-    }
-
     .devavatar {
         width: 50px;
         height: 50px;
     }
 
-    ion-avatar img {
-        width: 100%;
-        height: 100%;
-
-    }
-
-    .sairperfil {
-        bottom: 20%;
-        position: static;
-        margin-bottom: 0px;
-        margin: 0px;
-    }
-
-    .page-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        height: 58vh;
-    }
 }

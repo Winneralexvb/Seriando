@@ -10,5 +10,10 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(){}
+
+  ngOnInit() {
+
+  }
 }

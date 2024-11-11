@@ -7,33 +7,76 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="Recomendar">
-    <ion-h1 class="Recomendar-text">Recomendações:</ion-h1>
-    <swiper-container [slidesperview]="2" [loop]="true">
-      <swiper-slide>
-        <div class="slide-img"></div>
-        <div class="slide-text">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="slide-img"></div>
-        <div class="slide-text">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="slide-img"></div>
-        <div class="slide-text">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="slide-img"></div>
-        <div class="slide-text">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-    </swiper-container>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange($event.detail.value)">
+    <ion-segment-button value="filmes">
+      <ion-icon name="videocam-outline"></ion-icon>
+      <ion-label>Filmes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="series">
+      <ion-icon name="tv-outline"></ion-icon>
+      <ion-label>Séries</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list-header>
+    <ion-label>Para Assistir</ion-label>
+  </ion-list-header>
+  
+  <div *ngIf="selectedSegment === 'filmes'">
+
+    <ion-list [inset]="true">
+      <ion-item-sliding>
+        <ion-item>
+          <img class="img-list">
+          <ion-label class="name-list">Pantera Negra: Wakanda Forever</ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="success" expandable="true">
+            <ion-icon slot="top" name="eye-outline"></ion-icon>
+            Visto
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-list [inset]="true">
+      <ion-item-sliding>
+        <ion-item>
+          <img class="img-list">
+          <ion-label class="name-list">Pantera Negra: Wakanda Forever</ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="success" expandable="true">
+            <ion-icon slot="top" name="eye-outline"></ion-icon>
+            Visto
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+
+
   </div>
+
+  <div *ngIf="selectedSegment === 'series'">
+    <ion-list [inset]="true">
+      <ion-item-sliding>
+        <ion-item>
+          <img class="img-list">
+          <ion-label class="name-list">Pantera Negra: Wakanda Forever</ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="success" expandable="true">
+            <ion-icon slot="top" name="eye-outline"></ion-icon>
+            Visto
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+
+
+
+  </div>
+
 </ion-content>

@@ -1,56 +1,17 @@
-.recomendar {
+.img-list {
   width: 100vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 2px;
-}
-
-.Recomendar-text {
-  font-size: 20px;
-  font-weight: 500;
-  padding-left: 50px;
-}
-
-swiper-slide {
-  justify-content: center;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-swiper-container {
-  width: 100vw;
-  height: auto;
-  align-items: center;
-  height: 200px;
-  margin-top: 10px;
-}
-
-.slide-img {
-  background-image: url(../../assets/image/wakandaforever.jpg);
+  height: 18vw;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  width: 90vw;
-  height: 18vh;
+  background-image: url(../../assets/image/wakandaforever.jpg);
+  background-color: transparent;
   border-radius: 25px;
-  margin: 0 auto;
-}
-.slide-text p {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: 8px;
-  color: black;
+  border: 1px solid #ff0000;
 }
 
-#button {
-  --background: #3880ff;
-  --border-radius: 50%;
-}
-
-h2 {
-  font-size: 24px;
-  margin-top: 10px;
+.name-list {
+  position: absolute;
+  width: 70vw;
+  margin-left: 10px;
+  bottom: 5px;
 }

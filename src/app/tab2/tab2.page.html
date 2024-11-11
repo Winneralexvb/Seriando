@@ -1,15 +1,35 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header [translucent]="true">
+  <!-- <ion-toolbar>
     <ion-title>
-      Explorar
+      Histórico
+        <ion-button slot="end" fill="clear">
+            <ion-icon class="devs" name="people-outline"></ion-icon>
+        </ion-button>
     </ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
   <ion-toolbar>
-    <ion-searchbar show-clear-button="always" clear-icon="trash-bin" placeholder="Pesquisar"></ion-searchbar>
+    <ion-title>Em Breve</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header>
-  </ion-header>
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange($event.detail.value)">
+    <ion-segment-button value="filmes">
+      <ion-icon name="videocam-outline"></ion-icon>
+      <ion-label>Filmes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="series">
+      <ion-icon name="tv-outline"></ion-icon>
+      <ion-label>Séries</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="selectedSegment === 'filmes'">
+    <ion-chip color="danger">Em Breve</ion-chip>
+
+
+  </div>
+
+  <div *ngIf="selectedSegment === 'series'">
+  </div>
 </ion-content>
