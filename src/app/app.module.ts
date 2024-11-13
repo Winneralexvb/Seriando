@@ -8,9 +8,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DetailspageComponent } from './components/detailspage/detailspage.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DetailspageComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

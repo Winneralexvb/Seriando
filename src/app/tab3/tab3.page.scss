@@ -97,3 +97,20 @@ h2 {
   font-size: 24px;
   margin-top: 10px;
 }
+
+.overlay-results {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  z-index: 10; // Sobrepõe o conteúdo principal
+  padding: 1rem;
+  overflow-y: auto; // Permite rolagem se os resultados forem muitos
+}
+
+.searchbar {
+  padding-top: 15px;
+}
+

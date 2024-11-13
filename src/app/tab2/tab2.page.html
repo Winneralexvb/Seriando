@@ -11,7 +11,7 @@
     <ion-title>Em Breve</ion-title>
   </ion-toolbar>
 </ion-header>
-
+  
 <ion-content [fullscreen]="true">
   <ion-segment [(ngModel)]="selectedSegment" (ionChange)="onSegmentChange($event.detail.value)">
     <ion-segment-button value="filmes">
@@ -25,11 +25,10 @@
   </ion-segment>
 
   <div *ngIf="selectedSegment === 'filmes'">
-    <ion-chip color="danger">Em Breve</ion-chip>
-
 
   </div>
 
   <div *ngIf="selectedSegment === 'series'">
+    <ion-chip color="danger">Em Breve</ion-chip>
   </div>
 </ion-content>

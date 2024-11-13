@@ -1,0 +1,72 @@
+<ion-content>
+  <div *ngIf="itemDetails">
+    <!-- Backdrop com imagem -->
+    <img *ngIf="itemDetails.backdrop_path" [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
+      alt="{{ itemDetails.title || itemDetails.name }}" class="backdrop-img" />
+    <img class="overlay">
+    <!-- Título -->
+    <h1>{{ itemDetails.title || itemDetails.name }}</h1>
+
+    <!-- Sinopse -->
+    <p>{{ itemDetails.overview }}</p>
+
+    <!-- Data de lançamento -->
+    <p>Lançamento: {{ itemDetails.release_date || itemDetails.first_air_date }}</p>
+
+    <!-- Avaliação -->
+    <p>Avaliação: {{ itemDetails.vote_average }}</p>
+
+    <!-- Classificação indicativa -->
+    <p>Classificação: {{ itemDetails.adult ? '18+' : 'Livre' }}</p>
+
+    <!-- Onde Assistir -->
+    <div *ngIf="watchProviders">
+      <h2>Onde Assistir</h2>
+      <div *ngIf="watchProviders.BR?.flatrate?.length">
+        <p *ngFor="let provider of watchProviders.BR.flatrate">{{ provider.provider_name }}</p>
+      </div>
+      <div *ngIf="!watchProviders.BR?.flatrate?.length">
+        <p>Não disponível para streaming no Brasil.</p>
+      </div>
+    </div>
+
+    <!-- Elenco -->
+    <div class="slide" *ngIf="cast?.length">
+      <ion-h1 class="slide-title"><span>Elenco</span><ion-icon
+        name="chevron-forward-outline"></ion-icon></ion-h1>
+      <swiper-container [slidesPerView]="2.8" [loop]="false">
+        <swiper-slide *ngFor="let actor of cast">
+          <div class="slide-img"
+            [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + actor.profile_path + ')'}">
+          </div>
+          <div class="slide-text">
+            <p>{{ actor.name }}</p>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <!-- Recomendações -->
+
+    <div class="slide" *ngIf="recommendations?.length">
+      <ion-h1 (click)="navigateTo('tab2')" class="slide-title">
+        <span>Recomendações</span>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-h1>
+      <swiper-container [slidesPerView]="2.5" [loop]="false">
+        <swiper-slide *ngFor="let recommendation of recommendations">
+          <div class="slide-img" 
+            (click)="navigateToDetailsPage(recommendation.id, recommendation.media_type)" 
+            [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + recommendation.poster_path + ')'}">
+            <div class="add-list">
+              <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>
+            </div>
+          </div>
+          <div class="slide-text">
+            <p>{{ recommendation.title || recommendation.name }}</p>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
+</ion-content>

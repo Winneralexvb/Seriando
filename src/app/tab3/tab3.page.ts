@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { TmdbService } from '../services/tmdb.service';
 import { StateService } from '../services/segment/state.service';
+import { ModalController } from '@ionic/angular';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { DetailspageComponent } from '../components/detailspage/detailspage.component';
+
 
 @Component({
   selector: 'app-tab3',
@@ -24,8 +28,11 @@ export class Tab3Page {
   popularTitle: string = "Populares";
   seriesTitle: string = "Séries Populares";
   selectedSegment: string = ''; // Define um valor padrão
-  searchTerm: string = '';
-  results: any[] = [];
+
+  /* Pesquisa */
+  showSearchbar = false;  // Inicialmente o searchbar está oculto
+  isSearchbarVisible: boolean = true; // Controla a visibilidade do searchbar
+
 
   constructor(private navCtrl: NavController, private tmdbService: TmdbService, private stateService: StateService) {
     this.selectedSegment = this.stateService.getSelectedSegment(); // Obtem o valor do segmento
@@ -51,18 +58,19 @@ export class Tab3Page {
     this.stateService.setSelectedSegment(value); // Atualiza o valor global
   }
 
-  onSearch() {
-    if (this.searchTerm.trim()) {
-      this.tmdbService.searchMoviesAndSeries(this.searchTerm).subscribe(
-        (data) => {
-          this.results = data.results;
-        },
-        (error) => {
-          console.error('Erro na busca:', error);
-        }
-      );
-    }
+  toggleSearchbar() {
+    this.showSearchbar = !this.showSearchbar;  // Alterna a visibilidade
   }
+
+  onSearchbarClose() {
+    this.isSearchbarVisible = false; // Oculta o searchbar quando o evento 'close' for emitido
+  }
+
+  navigateToDetailsPage(id: number, mediaType: 'movie' | 'tv') {
+    this.navCtrl.navigateForward(`/details/${id}/${mediaType}`);
+  }
+  
+
 
   /* Order */
   loadMovies() {
@@ -79,12 +87,12 @@ export class Tab3Page {
 
   loadSeries() {
     // Carrega séries populares
-    this.tmdbService.getPopularShows().subscribe((data: any) => {
+    this.tmdbService.getPopularSeries().subscribe((data: any) => {
       this.seriesPopulares = data.results; // Atualiza a lista de séries populares
     });
 
     // Carrega séries em alta
-    this.tmdbService.getTrendingShows().subscribe((data: any) => {
+    this.tmdbService.getPopularSeries().subscribe((data: any) => {
       this.seriesTrending = data.results; // Carrega séries em alta
     });
   }
@@ -102,7 +110,7 @@ export class Tab3Page {
   }
 
   loadSeriesGenres() {
-    this.tmdbService.getSeriesGenres().subscribe((data: any) => {
+    this.tmdbService.getTvGenres().subscribe((data: any) => {
       this.genres = data.genres;
       this.getRandomSeriesGenres();
     });

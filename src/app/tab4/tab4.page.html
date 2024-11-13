@@ -29,6 +29,11 @@
     </ion-item>
   </ion-list>
 
+
+  <div *ngFor="let backdrop of backdrops">
+    <img [src]="'https://image.tmdb.org/t/p/w780/' + backdrop.file_path" alt="Backdrop Image" />
+  </div>
+  
   <div class="favoritos">
     <ion-h1 class="favoritos-text">Favoritos:</ion-h1>
     <swiper-container class="favoritos-swiper" [slidesperview]="3" [loop]="false">
