@@ -36,6 +36,10 @@ export class DetailspageComponent implements OnInit {
     this.navCtrl.navigateForward(`/details/${id}/${mediaType}`);
   }
 
+  closePage() {
+    this.navCtrl.back(); // Volta para a página anterior
+  }
+
 
 
   loadItemDetails(id: number) {
