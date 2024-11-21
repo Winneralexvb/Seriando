@@ -1,12 +1,17 @@
 <ion-content>
-  <div *ngIf="itemDetails">
+  <div *ngIf="itemDetails" class="details">
     <!-- Backdrop com imagem -->
-    <img *ngIf="itemDetails.backdrop_path" [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
-      alt="{{ itemDetails.title || itemDetails.name }}" class="backdrop-img" />
-    <img class="overlay">
-    <!-- Título -->
-    <h1>{{ itemDetails.title || itemDetails.name }}</h1>
 
+    <div class="divheader">
+      <img 
+        *ngIf="itemDetails.backdrop_path" 
+        [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
+        alt="{{ itemDetails.title || itemDetails.name }}" 
+        class="backdrop-img"
+      />
+      <!-- Título com fundo transparente -->
+      <h1 class="title-overlay">{{ itemDetails.title || itemDetails.name }}</h1>
+    </div>
     <!-- Sinopse -->
     <p>{{ itemDetails.overview }}</p>
 
@@ -32,8 +37,7 @@
 
     <!-- Elenco -->
     <div class="slide" *ngIf="cast?.length">
-      <ion-h1 class="slide-title"><span>Elenco</span><ion-icon
-        name="chevron-forward-outline"></ion-icon></ion-h1>
+      <ion-h1 class="slide-title"><span>Elenco</span><ion-icon name="chevron-forward-outline"></ion-icon></ion-h1>
       <swiper-container [slidesPerView]="2.8" [loop]="false">
         <swiper-slide *ngFor="let actor of cast">
           <div class="slide-img"
@@ -55,8 +59,7 @@
       </ion-h1>
       <swiper-container [slidesPerView]="2.5" [loop]="false">
         <swiper-slide *ngFor="let recommendation of recommendations">
-          <div class="slide-img" 
-            (click)="navigateToDetailsPage(recommendation.id, recommendation.media_type)" 
+          <div class="slide-img" (click)="navigateToDetailsPage(recommendation.id, recommendation.media_type)"
             [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + recommendation.poster_path + ')'}">
             <div class="add-list">
               <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>

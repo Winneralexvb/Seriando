@@ -27,11 +27,13 @@ ion-checkbox {
   margin: 6px 6px 0 0;
   --size: 26px;
   --checkbox-background-checked: #ec1515;
+  z-index: 10;
 }
 
 ion-checkbox::part(container) {
   border-radius: 6px;
   border: 1px solid #ff0000;
+  z-index: 10;
 }
 
 swiper-slide {

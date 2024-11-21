@@ -36,6 +36,12 @@ export class SearchbarComponent implements OnInit {
     this.navCtrl.navigateForward(`/details/${id}/${mediaType}`);
   }
 
+  closePage() {
+    window.location.reload(); // Volta para a página anterior
+  }
+
+  
+
   // Método para realizar a pesquisa
   // Método para realizar a pesquisa
   onSearch() {

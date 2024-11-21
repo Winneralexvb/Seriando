@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="chevron-back-outline" size="large" vertical="center" (click)="onClose()" slot="start"></ion-icon>
+    <ion-buttons slot="start">
+      <ion-button expand="block" (click)="closePage()">
+        <ion-icon name="chevron-back-outline" size="large" vertical="center" 
+        slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onSearch()" debounce="500" show-clear-button="always"
-      clear-icon="trash-bin" placeholder="Pesquisar"></ion-searchbar>
+      clear-icon="trash-bin" placeholder="Pesquisar" animated="true" class="searchbar"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
