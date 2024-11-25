@@ -143,4 +143,9 @@ getMovies(params: any = {}): Observable<any> {
   return this.getRequest('/discover/movie', params);
 }
 
+// Método genérico para buscar séries com filtros opcionais
+getTvShows(params: any = {}): Observable<any> {
+  return this.getRequest('/discover/tv', params);
+}
+
 }

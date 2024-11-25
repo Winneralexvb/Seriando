@@ -13,6 +13,7 @@ export class Tab2Page {
   selectedSegment: string = 'filmes'; // Define um valor padrão
   searchResults: any[] = [];
   upcomingMovies: any[] = [];
+  upcomingSeries: any[] = [];
 
 
 
@@ -45,6 +46,13 @@ export class Tab2Page {
     this.tmdbService.getMovies().subscribe((response: any) => {
       const today = new Date().toISOString();
       this.upcomingMovies = response.results.filter((movie: any) => movie.release_date > today);
+    });
+  }
+
+  fetchUpcomingSeries() {
+    this.tmdbService.getTvShows().subscribe((response: any) => {
+      const today = new Date().toISOString();
+      this.upcomingSeries = response.results.filter((series: any) => series.first_air_date > today);
     });
   }
 

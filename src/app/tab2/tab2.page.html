@@ -1,12 +1,4 @@
 <ion-header [translucent]="true">
-  <!-- <ion-toolbar>
-    <ion-title>
-      Histórico
-        <ion-button slot="end" fill="clear">
-            <ion-icon class="devs" name="people-outline"></ion-icon>
-        </ion-button>
-    </ion-title>
-  </ion-toolbar> -->
   <ion-toolbar>
     <ion-title>Em Breve</ion-title>
   </ion-toolbar>
@@ -44,6 +36,16 @@
   </div>
 
   <div *ngIf="selectedSegment === 'series'">
-    <ion-chip color="danger">Em Breve</ion-chip>
+    <ion-list class="result-list" [inset]="true">
+      <ion-item *ngFor="let result of upcomingSeries" (click)="navigateToDetailsPage(result.id, 'tv')">
+        <img class="list-img" slot="start" [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path" *ngIf="result.poster_path; else noImage">
+        <ion-label>{{ result.name }}</ion-label>
+        <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    
+    <ng-template #noImage>
+      <div class="placeholder-img">No Image</div>
+    </ng-template>
   </div>
 </ion-content>
