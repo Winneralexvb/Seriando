@@ -2,21 +2,23 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button expand="block" (click)="closePage()">
-        <ion-icon name="chevron-back-outline" size="large" vertical="center" slot="start"></ion-icon>
+        <ion-icon name="chevron-back-outline" size="large" vertical="center" 
+        slot="start"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onSearch()" debounce="500" show-clear-button="always"
       clear-icon="trash-bin" placeholder="Pesquisar" animated="true" class="searchbar"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-  <ion-list class="result-list" [inset]="true">
-    <ion-item *ngFor="let result of searchResults" (click)="navigateToDetailsPage(result.id, result.media_type)">
-      <img class="list-img" slot="start" [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path">
-      <ion-label>{{ result.title || result.name }}</ion-label>
-      <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>
-    </ion-item>
-  </ion-list>
 
-  <ion-text *ngIf="showResults && searchResults.length === 0">
-    <p>Nenhum resultado encontrado.</p>
-  </ion-text>
+<ion-list class="result-list" [inset]="true">
+  <ion-item *ngFor="let result of searchResults" (click)="navigateToDetailsPage(result.id, result.media_type)">
+    <img class="list-img" slot="start" [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path">
+    <ion-label>{{ result.title || result.name }}</ion-label>
+    <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>
+  </ion-item>
+</ion-list>
+
+<ion-text *ngIf="showResults && searchResults.length === 0">
+  <p>Nenhum resultado encontrado.</p>
+</ion-text>

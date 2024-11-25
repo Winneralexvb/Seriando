@@ -1,3 +1,9 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
 <ion-content [fullscreen]="true">
   <div class="background-image"></div>
 
@@ -5,7 +11,7 @@
     <ion-card-header>
         <ion-button class="entrar" expand="block" fill="solid" routerDirection="forward"
           (click)="navigateTo('entrar')">Entrar</ion-button>
-        <ion-button class="cadastrar" expand="block" fill="outline" (click)="navigateTo('cadastro')">Criar
+        <ion-button class="cadastrar" expand="block" fill="outline" (click)="navigateTo('register')">Criar
           Conta</ion-button>
     </ion-card-header>
 
@@ -14,3 +20,38 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+
+<!-- <ion-content [fullscreen]="true">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    
+
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        <small *ngIf="form.get('email')?.errors?.['required']">Email é obrigatório.</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Email inválido.</small>
+      </div>
+    </div>
+  
+
+    
+
+    <div>
+      <label for="password">Senha:</label>
+      <input id="password" formControlName="password" type="password" />
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+        <small *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatória.</small>
+        <small *ngIf="form.get('password')?.errors?.['minlength']">Senha deve ter pelo menos 6 caracteres.</small>
+      </div>
+    </div>
+  
+
+    
+
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+  </form>
+</ion-content> 
+ -->

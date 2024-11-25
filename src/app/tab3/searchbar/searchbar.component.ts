@@ -26,7 +26,6 @@ export class SearchbarComponent implements OnInit {
     this.close.emit(); // Emite o evento para ocultar o componente
     this.navCtrl.navigateBack('/tabs/tab3'); // Navega de volta para a tab3
   }
-  
 
   /* Utility */
   navigateTo(tab: string) {
@@ -40,7 +39,6 @@ export class SearchbarComponent implements OnInit {
   closePage() {
     window.location.reload(); // Volta para a página anterior
   }
-
 
   
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { register } from 'swiper/element/bundle';
+import { AuthService } from './services/auth/auth.service';
 
 register();
 
@@ -11,11 +12,12 @@ register();
 })
 export class AppComponent {
 
-  constructor(){}
+  constructor(private auth: AuthService){}
 
   ngOnInit() {
-
+    this.auth.getProfile().then((user => {
+      this.auth.User$.next(user);
+      console.log(user);
+    }))
   }
-
-
 }

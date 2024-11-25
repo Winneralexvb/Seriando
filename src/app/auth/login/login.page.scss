@@ -1,51 +1,55 @@
+// input{
+//     color: black;
+// }
+
 .overscroll::before, .overscroll::after {
-  width: 0px;
-  height: 0px;
-}
-
-.scroll-y {
-  --overflow-y: hidden !important;
-}
-
-/* Estilo para a imagem de fundo */
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 75vh;
-  background: url('../../../assets/image/background-login.jpg') no-repeat center center / cover;
-  z-index: -1;
-  overflow: hidden;
-}
-
-ion-card {
-  margin: 0;
-  position: absolute;
-  background-color: white;
-  bottom: 0;
-  width: 100vw;
-  height: 30vh;
-}
-
-ion-card-header {
-  flex-direction: column;
-}
-
-ion-card-content{
-  padding-top: 30px !important;
-  padding: 0 5px 5px 5px;
-  text-align: center;
-}
-
-.entrar {
-  --background: #ff0000;
-}
-
-ion-button, .cadastrar{
-  --background-hover: #ec1515;
-  --background-activated: #ec1515;
-  --background-focused: #ec1515;
-  --border-color: #ff0000;
-  color: black;
-}
+    width: 0px;
+    height: 0px;
+  }
+  
+  .scroll-y {
+    --overflow-y: hidden !important;
+  }
+  
+  /* Estilo para a imagem de fundo */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 75vh;
+    background: url('../../../assets/image/background-login.jpg') no-repeat center center / cover;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  ion-card {
+    margin: 0;
+    position: absolute;
+    background-color: white;
+    bottom: 0;
+    width: 100vw;
+    height: 30vh;
+  }
+  
+  ion-card-header {
+    flex-direction: column;
+  }
+  
+  ion-card-content{
+    padding-top: 30px !important;
+    padding: 0 5px 5px 5px;
+    text-align: center;
+  }
+  
+  .entrar {
+    --background: #ff0000;
+  }
+  
+  ion-button, .cadastrar{
+    --background-hover: #ec1515;
+    --background-activated: #ec1515;
+    --background-focused: #ec1515;
+    --border-color: #ff0000;
+    color: black;
+  }

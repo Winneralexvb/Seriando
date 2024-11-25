@@ -93,7 +93,11 @@
 
   <div class="page-container">
     <ion-button class="sairperfil" fill="clear" expand="block" size="large" horizontal="center" vertical="end"
-      (click)="navigate('login')">Sair<ion-icon name="log-out-outline"></ion-icon></ion-button>
+      (click)="logOut()">Sair<ion-icon name="log-out-outline"></ion-icon></ion-button>
+  </div>
+  <div class="page-container">
+    <ion-button class="sairperfil" fill="clear" expand="block" size="large" horizontal="center" vertical="end"
+      (click)="getFavorites()">Favoritos<ion-icon name="log-out-outline"></ion-icon></ion-button>
   </div>
 
   <ion-modal trigger="open-modal" [initialBreakpoint]="0.4" [breakpoints]="[0, 0.4, 1]">

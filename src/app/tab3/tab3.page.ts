@@ -65,7 +65,6 @@ export class Tab3Page {
   onSearchbarClose() {
     this.isSearchbarVisible = false; // Oculta o searchbar quando o evento 'close' for emitido
   }
-  
 
   navigateToDetailsPage(id: number, mediaType: 'movie' | 'tv') {
     this.navCtrl.navigateForward(`/details/${id}/${mediaType}`);

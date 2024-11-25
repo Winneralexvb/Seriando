@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class TmdbService {
   private apiUrl = 'https://api.themoviedb.org/3';
-  private apiKey = '5bbe8fabd611329f7d73f010a4929c6a';  // Sua chave da API TMDB
+  private apiKey = '5bbe8fabd611329f7d73f010a4929c6a';
+  private apiKeyTmdb = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Yjg2ZTQ3ODM3MTlkOGEyYTZhMzUxYWY4NjRmZGYzMSIsIm5iZiI6MTcyOTY1MTIxMi4zNzU3NDEsInN1YiI6IjY3MGIyYjdjZjU4YTkyMDZhYTQwYmQwMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LoLl3rEIop-Fk98nx_CnN5-VK1ExGBis0uuPnqFsxX0';  // Sua chave da API TMDB
 
   constructor(private http: HttpClient) { }
 
@@ -126,6 +127,16 @@ export class TmdbService {
     return this.getRequest(`/${mediaType}/${id}/watch/providers`);
   }
 
+  getMovieDetails(movieId: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': this.apiKeyTmdb,
+      'accept': 'application/json'
+    });
+    return this.http.get<any>(`${this.apiUrl}/movie/${movieId}?language=pt-BR`, { headers})
+  }
+
+/* 24/11 */
+  
   // Filmes que irão lançar
 getUpcomingMovies(): Observable<any> {
   return this.getRequest('/movie/upcoming', { region: 'BR' });
@@ -149,3 +160,4 @@ getTvShows(params: any = {}): Observable<any> {
 }
 
 }
+
