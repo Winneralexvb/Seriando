@@ -4,7 +4,7 @@
 
 
 export const environment = {
-  production: false,
+  production: true,
     firebaseConfig : {
     apiKey: "AIzaSyBd87aVea3o3ZOoPmq32IoyufyKfJFjeKM",
     authDomain: "seriando-b3022.firebaseapp.com",
