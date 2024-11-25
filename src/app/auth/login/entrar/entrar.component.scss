@@ -1,0 +1,35 @@
+ion-content {
+    --background: white;
+}
+
+ion-input {
+    color: black;
+    --highlight-color-focused: red;
+    --placeholder-color: black;
+
+}
+
+ion-card {
+    margin: 0;
+    --background: white;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+ion-card-header {
+    flex-direction: column;
+}
+
+
+.entrar {
+    --background: black;
+    --color: white !important;
+}
+
+ion-button {
+    --background-hover: #ec1515;
+    --background-activated: #ec1515;
+    --background-focused: #ec1515;
+    --border-color: #ff0000;
+}

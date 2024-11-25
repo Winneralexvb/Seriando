@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-icon size="large" name="arrow-back-circle" color="light" routerDirection="back" (click)="goBack()"></ion-icon>
+    <ion-card-header>
+      <ion-input autocomplete="email" type="email" label="Digite seu E-mail" inputmode="email" required="true"
+        shape="round" autofocus="true" color="dark" label-placement="floating" fill="solid"
+        placeholder="email@exemplo.com"></ion-input>
+      <ion-input type="password" label="Digite sua Senha" color="dark" inputmode="text" shape="round"
+        label-placement="floating" fill="solid" placeholder="Senha"></ion-input>
+      <ion-input type="password" label="Digite sua Senha Novamente" color="dark" inputmode="text" shape="round"
+        label-placement="floating" fill="solid" placeholder="Senha"></ion-input>
+    </ion-card-header>
+    <ion-button color="primary" fill="clear">Já possui uma conta?</ion-button>
+
+    <ion-card-content>
+      <ion-button class="entrar" expand="block" fill="solid" shape="round" routerDirection="back"
+        (click)="navigateTo('tab1')">
+        <ion-icon slot="end" name="log-in-outline"></ion-icon>Cadastrar Minha Conta
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

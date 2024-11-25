@@ -32,6 +32,10 @@ export class DetailspageComponent implements OnInit {
     this.navCtrl.navigateRoot(`/tabs/${tab}`);
   }
 
+  goBack() {
+    this.navCtrl.back();
+  }
+
   navigateToDetailsPage(id: number, mediaType: 'movie' | 'tv') {
     this.navCtrl.navigateForward(`/details/${id}/${mediaType}`);
   }

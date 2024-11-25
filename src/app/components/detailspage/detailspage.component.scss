@@ -1,3 +1,7 @@
+.voltar {
+  position: absolute;
+}
+
 .slide {
   width: 100vw;
   height: 300px;
@@ -101,4 +105,17 @@ swiper-container {
   background-color: rgba(0, 0, 0, 0.6); /* Preto com 60% de transparência */
   font-size: 1.2rem; /* Ajuste o tamanho conforme necessário */
   text-align: center; /* Centraliza o texto */
+}
+
+.infos {
+  width: 95vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.actions{
+  width: 100vw;
+  height: 5vh;
 }

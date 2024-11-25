@@ -3,37 +3,38 @@
     <!-- Backdrop com imagem -->
 
     <div class="divheader">
-      <img 
-        *ngIf="itemDetails.backdrop_path" 
-        [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
-        alt="{{ itemDetails.title || itemDetails.name }}" 
-        class="backdrop-img"
-      />
+      <ion-icon class="voltar" size="large" name="arrow-back-circle" color="dark" routerDirection="back" (click)="goBack()"></ion-icon>
+      <img *ngIf="itemDetails.backdrop_path" [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
+        alt="{{ itemDetails.title || itemDetails.name }}" class="backdrop-img" />
       <!-- Título com fundo transparente -->
       <h1 class="title-overlay">{{ itemDetails.title || itemDetails.name }}</h1>
     </div>
+
+    <div class="infos">
+      <!-- Data de lançamento -->
+      <p>Lançamento: {{ itemDetails.release_date || itemDetails.first_air_date }}</p>
+      <!-- Classificação indicativa -->
+      <p>Classificação: {{ itemDetails.adult ? '18+' : 'Livre' }}</p>
+    </div>
+
     <!-- Sinopse -->
     <p>{{ itemDetails.overview }}</p>
-
-    <!-- Data de lançamento -->
-    <p>Lançamento: {{ itemDetails.release_date || itemDetails.first_air_date }}</p>
 
     <!-- Avaliação -->
     <p>Avaliação: {{ itemDetails.vote_average }}</p>
 
-    <!-- Classificação indicativa -->
-    <p>Classificação: {{ itemDetails.adult ? '18+' : 'Livre' }}</p>
-
-    <!-- Onde Assistir -->
-    <div *ngIf="watchProviders">
-      <h2>Onde Assistir</h2>
-      <div *ngIf="watchProviders.BR?.flatrate?.length">
-        <p *ngFor="let provider of watchProviders.BR.flatrate">{{ provider.provider_name }}</p>
-      </div>
-      <div *ngIf="!watchProviders.BR?.flatrate?.length">
-        <p>Não disponível para streaming no Brasil.</p>
-      </div>
-    </div>
+<div class="actions">
+  <ion-buttons>
+    <ion-tab-button (click)="navigateTo('tab1')">
+      <ion-icon name="add"></ion-icon>
+      <ion-label>Adicionar à lista</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navigateTo('tab1')">
+      <ion-icon name="heart"></ion-icon>
+      <ion-label>Adicionar aos Favoritos</ion-label>
+    </ion-tab-button>
+  </ion-buttons>
+</div>
 
     <!-- Elenco -->
     <div class="slide" *ngIf="cast?.length">

@@ -22,6 +22,10 @@ export class Tab4Page implements OnInit {
     this.loadBackdropImages();
   }
 
+  navigate(page: string) {
+    this.navCtrl.navigateRoot(`${page}`);
+  }
+
   loadBackdropImages() {
     const seriesId = 94997; // Exemplo de ID de série (The Walking Dead)
     this.tmdbService.getBackdropImages('tv', seriesId).subscribe((data: any) => {

@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+  <div class="background-image"></div>
+
+  <ion-card>
+    <ion-card-header>
+        <ion-button class="entrar" expand="block" fill="solid" routerDirection="forward"
+          (click)="navigateTo('entrar')">Entrar</ion-button>
+        <ion-button class="cadastrar" expand="block" fill="outline" (click)="navigateTo('cadastro')">Criar
+          Conta</ion-button>
+    </ion-card-header>
+
+    <ion-card-content>
+      Acessar com:
+    </ion-card-content>
+  </ion-card>
+</ion-content>

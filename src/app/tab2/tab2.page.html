@@ -24,8 +24,23 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div *ngIf="selectedSegment === 'filmes'">
+  <ion-list-header>
+    <ion-label>Em Breve</ion-label>
+  </ion-list-header>
 
+  <div *ngIf="selectedSegment === 'filmes'">
+    <ion-list class="result-list" [inset]="true">
+      <ion-item *ngFor="let result of upcomingMovies" (click)="navigateToDetailsPage(result.id, 'movie')">
+        <img class="list-img" slot="start" [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path" *ngIf="result.poster_path; else noImage">
+        <ion-label>{{ result.title }}</ion-label>
+        <ion-checkbox justify="end"><ion-icon name="add-outline"></ion-icon></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    
+    <ng-template #noImage>
+      <div class="placeholder-img">No Image</div>
+    </ng-template>
+    
   </div>
 
   <div *ngIf="selectedSegment === 'series'">

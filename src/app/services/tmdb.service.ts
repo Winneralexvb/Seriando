@@ -126,4 +126,21 @@ export class TmdbService {
     return this.getRequest(`/${mediaType}/${id}/watch/providers`);
   }
 
+  // Filmes que irão lançar
+getUpcomingMovies(): Observable<any> {
+  return this.getRequest('/movie/upcoming', { region: 'BR' });
+}
+
+// Séries que irão lançar (baseado no critério de "primeira exibição futura")
+getUpcomingSeries(): Observable<any> {
+  return this.getRequest('/discover/tv', {
+    'first_air_date.gte': new Date().toISOString().split('T')[0],
+    sort_by: 'first_air_date.asc'
+  });
+}
+
+getMovies(params: any = {}): Observable<any> {
+  return this.getRequest('/discover/movie', params);
+}
+
 }
