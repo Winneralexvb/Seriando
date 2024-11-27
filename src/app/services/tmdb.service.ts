@@ -135,6 +135,14 @@ export class TmdbService {
     return this.http.get<any>(`${this.apiUrl}/movie/${movieId}?language=pt-BR`, { headers})
   }
 
+  getTvDetails(movieId: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': this.apiKeyTmdb,
+      'accept': 'application/json'
+    });
+    return this.http.get<any>(`${this.apiUrl}/tv/${movieId}?language=pt-BR`, { headers})
+  }
+
 /* 24/11 */
   
   // Filmes que irão lançar

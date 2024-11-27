@@ -1,147 +1,53 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Perfil</ion-title>
-    <ion-buttons slot="end">
-      <ion-button id="open-modal" expand="block">
-        <ion-icon class="devs" name="people-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title slot="start">
+      Minha conta
+    </ion-title>
+    
+      <ion-icon size="large" name="menu-outline" id="open-modal" slot="end"></ion-icon>
+    
+
+      <ion-modal trigger="open-modal" [handle]="false" [initialBreakpoint]="0.2">
+        <ng-template>
+          <ion-content>
+            <ion-list class="full-height">
+              <ion-item button>
+                <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+                <ion-label>Gerenciar perfil</ion-label>
+              </ion-item>
+              <ion-item button>
+                <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+                <ion-label>Ajuda</ion-label>
+              </ion-item>
+              <ion-item button (click)="logOut()">
+                <ion-icon slot="start" name="exit-outline"></ion-icon>
+                <ion-label>Sair</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <div class="userconfig"><ion-icon id="open-edit" name="create-outline" size="large"></ion-icon></div>
-  <div class="userbanner"><img style="background-image: url(../../assets/image/wakandaforever.jpg);">
-    <div class="userprofile">
-      <img src="https://avatars.githubusercontent.com/u/149628161?v=4">
-      <p>Winner Alex</p>
-    </div>
+  <div class="user-content">
+    <div class="user-info">
+    <img src="../../assets/image/guest.jpeg" alt="">
+    <p>{{userEmail}}</p>
   </div>
-  <ion-list lines="inset">
-    <ion-item>
-      <ion-icon slot="start" name="information-outline"></ion-icon>
-      <ion-label (click)="navigateTo('tab2')">Informações</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon slot="start" name="book-outline"></ion-icon>
-      <ion-label (click)="navigateTo('tab3')">Assistidos</ion-label>
-    </ion-item>
-  </ion-list>
+  </div>
 
 
-  <div *ngFor="let backdrop of backdrops">
-    <img [src]="'https://image.tmdb.org/t/p/w780/' + backdrop.file_path" alt="Backdrop Image" />
-  </div>
+  <app-card-list [movies]="favoritesMovies" text="Filmes Favoritos"></app-card-list>
+  <app-card-list [movies]="favoritesTvs" text="Séries Favoritas"></app-card-list>
+  <app-card-list [movies]="tvList" text="Minha Lista"></app-card-list>
+  <app-card-list [movies]="movieList" text="Minha Lista"></app-card-list>
   
-  <div class="favoritos">
-    <ion-h1 class="favoritos-text">Favoritos:</ion-h1>
-    <swiper-container class="favoritos-swiper" [slidesperview]="3" [loop]="false">
-      <swiper-slide class="favoritos-swipe">
-        <div class="slide-img-favoritos"></div>
-        <div class="slide-text-favoritos">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="slide-img-favoritos"></div>
-        <div class="slide-text-favoritos">
-          <p>Wakanda Forever</p>
-        </div>
-      </swiper-slide>
-    </swiper-container>
-
-    <div class="slide">
-      <ion-h1 class="slide-title"><span>Favoritos</span></ion-h1>
-      <swiper-container [slidesPerView]="2.5" [loop]="false">
-        <swiper-slide>
-          <div class="slide-img">
-            <!-- [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + movie.poster_path + ')'}"> -->
-          </div>
-          <div class="slide-text">
-            <p>Wakanda Forever</p>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="slide-img">
-            <!-- [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + movie.poster_path + ')'}"> -->
-          </div>
-          <div class="slide-text">
-            <p>Wakanda Forever</p>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="slide-img">
-            <!-- [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + movie.poster_path + ')'}"> -->
-          </div>
-          <div class="slide-text">
-            <p>Wakanda Forever</p>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="slide-img">
-            <!-- [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + movie.poster_path + ')'}"> -->
-          </div>
-          <div class="slide-text">
-            <p>Wakanda Forever</p>
-          </div>
-        </swiper-slide>
-      </swiper-container>
-    </div>
-
-  </div>
-
-  <div class="page-container">
-    <ion-button class="sairperfil" fill="clear" expand="block" size="large" horizontal="center" vertical="end"
-      (click)="logOut()">Sair<ion-icon name="log-out-outline"></ion-icon></ion-button>
-  </div>
-  <div class="page-container">
-    <ion-button class="sairperfil" fill="clear" expand="block" size="large" horizontal="center" vertical="end"
-      (click)="getFavorites()">Favoritos<ion-icon name="log-out-outline"></ion-icon></ion-button>
-  </div>
-
-  <ion-modal trigger="open-modal" [initialBreakpoint]="0.4" [breakpoints]="[0, 0.4, 1]">
-    <ng-template>
-      <ion-list lines="full">
-        <ion-item>
-          <ion-avatar class="devavatar" slot="start">
-            <ion-img src="https://avatars.githubusercontent.com/u/145864729?v=4"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Gabriel Dainez</h2>
-            <p>Desenvolvedor</p>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar class="devavatar" slot="start">
-            <ion-img src="https://avatars.githubusercontent.com/u/150967993?v=4"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Marcos Filipe</h2>
-            <p>Desenvolvedor</p>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar class="devavatar" slot="start">
-            <ion-img src="https://avatars.githubusercontent.com/u/149628161?v=4"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Winner Alex</h2>
-            <p>Desenvolvedor</p>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-avatar class="devavatar" slot="start">
-            <ion-img src="https://avatars.githubusercontent.com/u/83677370?v=4"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2>Oswaldo Peres</h2>
-            <p>Mentor</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ng-template>
-  </ion-modal>
 
   <ion-modal id="open-edit" #modal trigger="open-edit" [initialBreakpoint]="0.2" [breakpoints]="[0, 0.2]">
     <ng-template>

@@ -60,40 +60,6 @@
     padding-left: 50px;
 }
 
-.favoritos-swipe {
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 30vw;
-    height: auto;
-}
-
-.favoritos-swiper {
-    width: 100vw;
-    height: auto;
-    height: 200px;
-    margin-top: 10px;
-}
-
-.slide-img-favoritos {
-    background-image: url(../../assets/image/wakandaforever.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid #ff0000;
-    width: 90vw;
-    height: 18vh;
-    border-radius: 25px;
-    margin: 0 auto;
-}
-
-.slide-text-favoritos p {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 8px;
-}
-
 .slide {
     width: 100vw;
     height: 300px;
@@ -207,3 +173,48 @@ swiper-container {
     }
 
 }
+
+
+
+.full-height {
+    height: 100%;
+    border-radius: 15px;
+
+}
+
+ion-modal{
+    --border-radius: 25px;
+    --background: rgb(37, 37, 37);
+}
+
+ion-modal::part(backdrop) {
+    background-color: black;
+}
+  
+
+.user-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 4% 5px 4%;
+  }
+  
+  .user-info {
+    text-align: center; /* Centraliza conteúdo na horizontal */
+  }
+  
+  .user-info img {
+    width: 80px; /* Define a largura da imagem */
+    height: 80px; /* Define a altura da imagem */
+    border-radius: 20%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorções */
+    /* Adiciona uma borda leve */
+  }
+  
+  .user-info p {
+    margin-top: 10px; /* Espaço entre a imagem e o nome */
+    font-size: 24px; /* Tamanho da fonte */
+    color: #ffffff; /* Cor do texto */
+    font-weight: 600; /* Texto mais destacado */
+  }
+  

@@ -33,7 +33,7 @@ export class EntrarComponent implements OnInit {
 
   // Navegar para uma aba específica
   navigateTo(tab: string) {
-    this.navCtrl.navigateRoot(`/tabs/${tab}`);
+    this.navCtrl.navigateRoot(`/${tab}`);
   }
 
   navigateback(tab: string) {

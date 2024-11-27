@@ -1,0 +1,22 @@
+.card-list{
+    display: flex;
+}
+app-card{
+    display: inline-block;
+}
+
+.title-card-list{
+    margin: 16px 0;
+    color: white;
+    font-weight: 600;
+    z-index: +4;
+}
+
+
+swiper-container{
+    margin-top: 8px;
+}
+
+.slides-content{
+    margin: 4%;
+}

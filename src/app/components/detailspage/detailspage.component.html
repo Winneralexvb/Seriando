@@ -1,40 +1,44 @@
 <ion-content>
   <div *ngIf="itemDetails" class="details">
-    <!-- Backdrop com imagem -->
-
     <div class="divheader">
-      <ion-icon class="voltar" size="large" name="arrow-back-circle" color="dark" routerDirection="back" (click)="goBack()"></ion-icon>
+      <ion-icon class="voltar" size="large" name="arrow-back-circle" color="dark" routerDirection="back"
+        (click)="goBack()"></ion-icon>
+
       <img *ngIf="itemDetails.backdrop_path" [src]="'https://image.tmdb.org/t/p/w780/' + itemDetails.backdrop_path"
         alt="{{ itemDetails.title || itemDetails.name }}" class="backdrop-img" />
-      <!-- Título com fundo transparente -->
-      <h1 class="title-overlay">{{ itemDetails.title || itemDetails.name }}</h1>
+
     </div>
 
     <div class="infos">
-      <!-- Data de lançamento -->
-      <p>Lançamento: {{ itemDetails.release_date || itemDetails.first_air_date }}</p>
-      <!-- Classificação indicativa -->
-      <p>Classificação: {{ itemDetails.adult ? '18+' : 'Livre' }}</p>
+
+      <h1 class="title">{{ itemDetails.title || itemDetails.name }}</h1>
+
+      <div class="item-metadata">
+        <p>{{itemDetails.runtime}} Min</p>
+        <p>{{ itemDetails.release_date || itemDetails.first_air_date }}</p>
+        <p>{{ itemDetails.vote_average }}</p>
+      </div>
+      <p class="overview">{{ itemDetails.overview }}</p>
+
+      <div class="genre">
+        <p *ngFor="let genre of itemDetails.genres ">{{genre.name}}</p>
+      </div>
+
+
     </div>
 
-    <!-- Sinopse -->
-    <p>{{ itemDetails.overview }}</p>
 
-    <!-- Avaliação -->
-    <p>Avaliação: {{ itemDetails.vote_average }}</p>
+    <div class="actions">
+      <ion-buttons (click)="addToList(itemDetails.id, mediaType, itemDetails.title || itemDetails.name)">
+        <ion-icon [name]="isInList ? 'checkmark' : 'add'"></ion-icon>
+        <ion-label>{{ isInList ? 'Na lista' : 'Adicionar à lista' }}</ion-label>
+      </ion-buttons>
+      <ion-buttons (click)="isFavorite ? removeFromFavoriteMovies(itemDetails.id) : addFavorite(itemDetails.id, mediaType, itemDetails.title ||itemDetails.name )">
+        <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+        <ion-label>{{ isFavorite ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos' }}</ion-label>
+      </ion-buttons>
+    </div>
 
-<div class="actions">
-  <ion-buttons>
-    <ion-tab-button (click)="navigateTo('tab1')">
-      <ion-icon name="add"></ion-icon>
-      <ion-label>Adicionar à lista</ion-label>
-    </ion-tab-button>
-    <ion-tab-button (click)="navigateTo('tab1')">
-      <ion-icon name="heart"></ion-icon>
-      <ion-label>Adicionar aos Favoritos</ion-label>
-    </ion-tab-button>
-  </ion-buttons>
-</div>
 
     <!-- Elenco -->
     <div class="slide" *ngIf="cast?.length">

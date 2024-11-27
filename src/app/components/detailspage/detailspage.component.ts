@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TmdbService } from '../../services/tmdb.service';
 import { NavController } from '@ionic/angular';
+import { DbService } from 'src/app/services/db/db.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-detailspage',
@@ -14,10 +16,14 @@ export class DetailspageComponent implements OnInit {
   cast: any[] = []; // Para o elenco
   recommendations: any[] = []; // Para as recomendações
   mediaType!: 'movie' | 'tv'; // Tipo de mídia (filme ou série)
+  isFavorite = false;
+  isInList = false;
 
   constructor(private navCtrl: NavController,
     private route: ActivatedRoute,
-    private tmdbService: TmdbService
+    private tmdbService: TmdbService,
+    private dbService: DbService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -66,5 +72,46 @@ export class DetailspageComponent implements OnInit {
     this.tmdbService.getRecommendations(this.mediaType, id).subscribe((data) => {
       this.recommendations = data.results;
     });
+
+  }
+
+  addFavoriteMovie(mediaID: string, title: string){
+    this.authService.User$.subscribe( data => {
+      this.dbService.addFavoriteMovie(data?.uid, mediaID, title);
+    })
+  }
+
+  addFavoriteTv(mediaID: string, title: string){
+    this.authService.User$.subscribe( data => {
+      this.dbService.addFavoriteTV(data?.uid, mediaID, title);
+    })
+  }
+
+  addFavorite(mediaId: string, mediaType: string, title: string){
+    if (mediaType === 'movie'){
+      this.addFavoriteMovie(mediaId, title)
+    } else if( mediaType === 'tv'){
+      this.addFavoriteTv(mediaId, title)
+    }else {
+      console.warn('Tipo de mídia desconhecido!');
+    }
+
+    this.isFavorite = true;
+  }
+
+  addToList(mediaID: string, mediaType: 'movie' | 'tv', mediaTitle: string){
+    this.authService.User$.subscribe( data => {
+      this.dbService.addList(data?.uid, mediaID, mediaTitle, mediaType);
+    })
+
+    this.isInList = true;
+  }
+
+  removeFromFavoriteMovies(mediaID: string){
+    this.authService.User$.subscribe( data => {
+      this.dbService.removeFromFavoriteMovies(data?.uid, mediaID);
+    })
+    console.log('chegou aqui hehe');
+    this.isFavorite = false;
   }
 }

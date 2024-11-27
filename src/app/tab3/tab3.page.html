@@ -146,7 +146,7 @@
         <span>Em Alta</span><ion-icon name="chevron-forward-outline"></ion-icon>
       </ion-h1>
       <swiper-container [slidesPerView]="2.5" [loop]="false">
-        <swiper-slide *ngFor="let series of seriesPopulares">
+        <swiper-slide *ngFor="let series of seriesTrending">
           <div class="slide-img" 
             (click)="navigateToDetailsPage(series.id, 'tv')" 
             [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w780/' + series.poster_path + ')'}">

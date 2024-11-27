@@ -17,7 +17,7 @@
           <small *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatória.</small>
           <small *ngIf="form.get('password')?.errors?.['minlength']">Senha deve ter pelo menos 6 caracteres.</small>
         </div>
-        <ion-button color="primary" fill="clear" (click)="recoverPassword()" >Esqueci minha senha</ion-button>
+        <ion-button color="primary" fill="clear" (click)="navigateTo('recover')" >Esqueci minha senha</ion-button>
 
         <ion-button type="submit" expand="block" fill="solid" shape="round" [disabled]="form.invalid">
           <ion-icon slot="end" name="log-in-outline"></ion-icon>
@@ -28,12 +28,3 @@
     </ion-card-header>
   </ion-card>
 </ion-content>
-
-
-<!-- <ion-input type="email" label="Digite seu E-mail" label-placement="floating" fill="solid"
-    placeholder="email@exemplo.com"></ion-input>
-  <ion-input type="password" label="Digite sua Senha" label-placement="floating" fill="solid"
-    placeholder="Digite sua Senha"></ion-input>
-  <ion-button fill="solid" shape="round" routerDirection="back" (click)="goBack()">
-    <ion-icon name="log-in-outline"></ion-icon>
-  </ion-button> -->

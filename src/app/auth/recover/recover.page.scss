@@ -1,0 +1,66 @@
+ion-content {
+    --background: white;
+}
+
+ion-input {
+    color: black;
+    --highlight-color-focused: red;
+    /* Cor do foco no campo */
+    --placeholder-color: black;
+    /* Cor do placeholder */
+}
+
+ion-card {
+    margin: 0;
+    --background: white;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+ion-card-header {
+    flex-direction: column;
+}
+
+.entrar {
+    --background: black;
+    --color: white !important;
+}
+
+ion-button {
+    --background-hover: #ec1515;
+    /* Cor ao passar o mouse */
+    --background-activated: #ec1515;
+    /* Cor ao pressionar */
+    --background-focused: #ec1515;
+    /* Cor ao focar */
+    --border-color: #ff0000;
+    /* Cor da borda */
+}
+
+.error-msg small {
+    color: red;
+    /* Cor das mensagens de erro */
+    font-size: 0.8rem;
+    /* Tamanho da fonte das mensagens */
+    margin-left: 0.5rem;
+    /* Espaçamento lateral para separar da borda */
+}
+
+/* Ajustes adicionais para inputs */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* Espaçamento entre os campos */
+}
+
+ion-input {
+    --padding-start: 1rem;
+    /* Padding para um visual mais espaçoso */
+}
+
+ion-button[type='submit'] {
+    margin-top: 1rem;
+    /* Espaçamento acima do botão */
+}

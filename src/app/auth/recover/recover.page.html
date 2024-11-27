@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-card>
+    <ion-icon size="large" name="arrow-back-circle" color="light" routerDirection="back" (click)="goBack()"></ion-icon>
+
+    <ion-card-header>
+      <ion-title>Recuperar Senha</ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-input type="email" placeholder="Digite seu e-mail" [(ngModel)]="email" required color="dark" shape="round"
+        label="E-mail" label-placement="floating" fill="solid"></ion-input>
+
+      <ion-button expand="block" fill="solid" shape="round" (click)="onRecoverPassword()">
+        Enviar link de recuperação
+      </ion-button>
+
+      <ion-button expand="block" color="light" fill="clear" routerDirection="back" (click)="goBack()">
+        Voltar para login
+      </ion-button>
+
+      <ion-text color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

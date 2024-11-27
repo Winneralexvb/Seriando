@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirebaseError } from 'firebase/app';
 import { BehaviorSubject, catchError, from, Observable, throwError } from 'rxjs';
-import { User } from 'firebase/auth';
+import { getAuth, User } from 'firebase/auth';
 import { UserInterface } from 'src/interfaces/user.interface';
 import { NavController } from '@ionic/angular';
 
@@ -39,14 +39,6 @@ export class AuthService {
     return message;
   }
 
-  recoverPassword(email: string): Observable<void> {
-    return from(this.auth.sendPasswordResetEmail(email)).pipe(
-      catchError((error: FirebaseError) =>
-        throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
-      )
-    );
-  }
-
   async getProfile(): Promise<User | null> {
     return new Promise<User | null>((resolve, reject) => {
       this.auth.onAuthStateChanged(user => {
@@ -64,5 +56,45 @@ export class AuthService {
       location.reload();
     })
   };
+
+
+  // Função de Cadastro
+  signUp(email: string, password: string): Observable<any> {
+    return from(this.auth.createUserWithEmailAndPassword(email, password)).pipe(
+      catchError((error: FirebaseError) => {
+        const errorMsg = this.translateFirebaseErrorMessage(error);
+        return throwError(() => new Error(errorMsg));
+      })
+    );
+  }
+
+  recoverPassword(email: string): Observable<void> {
+    // Verificação para garantir que o email não está vazio
+    if (!email) {
+      return throwError(() => new Error('Por favor, insira um e-mail válido.'));
+    }
+
+
+    return from(this.auth.sendPasswordResetEmail(email)).pipe(
+      catchError((error: FirebaseError) =>
+        throwError(() => new Error(this.translateFirebaseErrorMessage(error)))
+      )
+    );
+  }
+
+  // Função para obter o ID do usuário logado
+  getUserId(): Observable<string | null> {
+    const auth = getAuth(); // Obtemos a instância do Auth
+    return new Observable<string | null>((observer) => {
+      const user = auth.currentUser;  // Verifica o usuário autenticado
+
+      if (user) {
+        observer.next(user.uid);  // Retorna o 'uid'
+      } else {
+        observer.next(null);  // Caso não haja usuário autenticado
+      }
+    });
+  }
+
 
 }

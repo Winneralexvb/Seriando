@@ -1,0 +1,16 @@
+
+<div class="slides-content">
+  <div class="title-card-list">
+    <span>{{text}}</span>
+  </div>
+
+  <swiper-container [freemode]="true" [slidesPerView]="3" [loop]="false" [spaceBetween]="10">
+    <swiper-slide *ngFor="let movie of movies;">
+      <app-card 
+        [movieUrl]="movie.id" 
+        [imageUrl]="movie.poster_path || movie.image" 
+        [title]="movie.title">
+      </app-card>
+    </swiper-slide>
+  </swiper-container>
+</div>
